@@ -3,9 +3,10 @@ using UnityEngine.Events;
 
 public class Monster : MonoBehaviour
 {
-    public UnityEvent MonsterDeadEvent;
     public int CurrentHitPoints { get; private set; } = 100;
     public int MaxHitPoints { get; } = 100;
+
+    public UnityEvent MonsterDeadEvent;
 
     public void CurrentHitPointsChange(int value)
     {
@@ -15,7 +16,7 @@ public class Monster : MonoBehaviour
         CurrentHitPoints += value;
 
         if (CurrentHitPoints == 0)
-            MonsterDeadEvent.Invoke();
+            MonsterDeadEvent?.Invoke();
     }
 
 }

@@ -6,17 +6,17 @@ public class HealthChanger : MonoBehaviour
 {
     [SerializeField] Monster _monster;
 
-    public UnityEvent IncreaseHealthEvent;
-    public UnityEvent DecreaseHealthEvent;
-
     public int DamageVal { get; } = -10;
     public int RecoveryVal { get; } = 10;
+
+    public UnityEvent IncreaseHealthEvent;
+    public UnityEvent DecreaseHealthEvent;
 
     public void OnIncreaseBtnClicked()
     {
         if (_monster.CurrentHitPoints < _monster.MaxHitPoints)
         {
-            IncreaseHealthEvent.Invoke();
+            IncreaseHealthEvent?.Invoke();
             _monster.CurrentHitPointsChange(RecoveryVal);
         }
     }
